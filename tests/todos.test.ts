@@ -1,6 +1,7 @@
 import request from 'supertest';
 
 import { createApp } from '../src/app';
+import { closeDb } from "../src/db";
 
 describe('todos', () => {
   it('creates and lists todos', async () => {
@@ -26,7 +27,6 @@ describe('todos', () => {
   });
 });
 
-import { closeDb } from "../src/db";
 
 afterAll(async () => {
   await closeDb();

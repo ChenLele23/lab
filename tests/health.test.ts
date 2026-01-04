@@ -1,6 +1,7 @@
 import request from 'supertest';
 
 import { createApp } from '../src/app';
+import { closeDb } from "../src/db";
 
 describe('health', () => {
   it('returns ok', async () => {
@@ -10,8 +11,6 @@ describe('health', () => {
     expect(res.body).toEqual({ ok: true });
   });
 });
-
-import { closeDb } from "../src/db";
 
 afterAll(async () => {
   await closeDb();
