@@ -21,6 +21,12 @@ export function createApp() {
     const { username, password } = req.body ?? {};
     const demoUser = process.env.DEMO_USER ?? 'admin';
     const demoPass = process.env.DEMO_PASS ?? 'admin';
+	
+    const ip = req.headers["x-forwarded-for"] ?? req.socket.remoteAddress ?? req.ip;
+console.log(
+  `[auth] login attempt user=${username} ip=${ip} success=${success} at=${new Date().toISOString()}`
+);
+
 
     const success = username === demoUser && password === demoPass;
 
