@@ -21,6 +21,8 @@ export function createApp() {
     const { username, password } = req.body ?? {};
     const demoUser = process.env.DEMO_USER ?? 'admin';
     const demoPass = process.env.DEMO_PASS ?? 'admin';
+
+    const success = username === demoUser && password === demoPass;
 	
     const ip = req.headers["x-forwarded-for"] ?? req.socket.remoteAddress ?? req.ip;
 console.log(
@@ -28,7 +30,7 @@ console.log(
 );
 
 
-    const success = username === demoUser && password === demoPass;
+//    const success = username === demoUser && password === demoPass;
 
     // TODO (lab step #4): add logging here in a separate branch (feature/logging)
 
